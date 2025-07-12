@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const affiliateTag = "smartcart-21"; // Change to your real tag
+
+    const pathParts = window.location.pathname.split('/');
+    const productId = pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+    if (productId) {
+      const url = `https://www.amazon.in/dp/${productId}?tag=${affiliateTag}`;
+      window.location.href = url;
+    } else {
+      document.body.innerText = "Oops! Can't find a product here.";
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to Amazon...</p>
+</body>
+</html>
