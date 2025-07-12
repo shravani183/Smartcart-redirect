@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting to Amazon...</title>
+  <script>
+    const affiliateTag = "smartcart-21"; // Replace with your actual tag
+
+    // Get the full path after "/"
+    const path = decodeURIComponent(window.location.pathname.replace(/^\/+|\/+$/g, ""));
+
+    if (path.startsWith("productinfo/")) {
+      const rawUrl = path.replace("productinfo/", "");
+      try {
+        const amazonUrl = new URL(rawUrl);
+        if (amazonUrl.hostname.includes("amazon")) {
+          if (!amazonUrl.searchParams.has("tag")) {
+            amazonUrl.searchParams.append("tag", affiliateTag);
+          }
+          window.location.href = amazonUrl.toString();
+        } else {
+          document.write("Invalid Amazon URL.");
+        }
+      } catch (e) {
+        document.write("Invalid URL format.");
+      }
+    } else {
+      document.write("No product link provided. Use format: /productinfo/[Amazon-URL]");
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html>
