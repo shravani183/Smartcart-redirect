@@ -1,0 +1,26 @@
+go/index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const affiliateTag = "smartcart-21"; // Replace this with your affiliate tag
+
+    // Get product ID from the URL path
+    const path = window.location.pathname;
+    const parts = path.split('/');
+    const productId = parts[parts.length - 1] || parts[parts.length - 2];
+
+    if (productId) {
+      const redirectUrl = `https://www.amazon.in/dp/${productId}?tag=${affiliateTag}`;
+      window.location.href = redirectUrl;
+    } else {
+      document.body.innerText = "Product ID not found in URL.";
+    }
+  </script>
+</head>
+<body>
+  <p>Redirecting to Amazon...</p>
+</body>
+</html>
